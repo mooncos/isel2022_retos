@@ -1,11 +1,11 @@
 /* LTL specs */
-
 /* 
     Semaforo para coches estados:
     2 -> verde
     1 -> ambar
     0 -> rojo
 */
+ 
 ltl peatonEvtCrucePrincipal {
 	[]((botonCrucePrincipal && ([]<> finEsperaLarga) && ([]<> finEsperaAmbar) && ([]<>finEsperaCambio)) -> (<> (semaforoPrincipal == 0)))
 }
@@ -20,6 +20,11 @@ ltl cochesEspiraPasarSecundario {
 
 ltl nuncaDosSemaforosVerde {
     []!((semaforoPrincipal == 2) && (semaforoSecundario == 2))
+}
+
+ltl nuncaDosSemaforosAmbarCombVerde {
+    []!((semaforoPrincipal == 2) && (semaforoSecundario == 1)) &&
+    []!((semaforoPrincipal == 1) && (semaforoSecundario == 2))
 }
 
 
@@ -47,6 +52,8 @@ int semaforoSecundario;
 
 active proctype fsm() {
     int state = 0;
+
+    printf("++ Estado inicial 0\n");
     
     do
     :: if
@@ -87,7 +94,10 @@ active proctype fsm() {
             fi
         }
     fi
-    
+
+    printf(">> Estado: %d, finEsperaLarga: %d, finEsperaAmbar: %d, finEsperaCambio: %d, espira: %d, botonCrucePrincipal: %d, botonCruceSecundario: %d\n", state, finEsperaLarga, finEsperaAmbar, finEsperaCambio, espira, botonCrucePrincipal, botonCruceSecundario);
+    printf("   semaforoPrincipal: %d, semaforoSecundario: %d\n", semaforoPrincipal, semaforoSecundario);
+
     od
 
     }
