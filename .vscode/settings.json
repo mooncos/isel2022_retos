@@ -1,3 +1,10 @@
 {
-    "makefile.extensionOutputFolder": "./.vscode"
+    "makefile.extensionOutputFolder": "./.vscode",
+    "files.associations": {
+        "*.ejs": "html",
+        "model.h": "c",
+        "fsm.h": "c",
+        "stdlib.h": "c",
+        "signal.h": "c"
+    }
 }
