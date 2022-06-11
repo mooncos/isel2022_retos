@@ -5,7 +5,7 @@ ltl siPresenciaLuz {
 }
 
 ltl sifinPresenciaLuz {
-	[](( (finPresencia) && (!presencia) )-> <> (!luz))
+	[](( (finPresencia) && (!presencia W !luz) )-> <> (!luz))
 }
 
 /* Inputs */
@@ -50,7 +50,7 @@ active proctype fsm(){
         }
         :: (state == 2) -> atomic {
             if
-            //:: (!finPresencia && !presencia) -> state = 2; luz = 1;  
+            :: (!finPresencia && !presencia) -> state = 2; luz = 1;  
             :: (finPresencia && !presencia) -> state = 0; luz = 0; finPresencia=0;
             :: (presencia) -> state = 1; luz = 1; presencia=0; 
             fi
