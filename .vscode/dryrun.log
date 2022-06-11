@@ -1,6 +1,0 @@
-make --dry-run --keep-going --print-directory
-make: Entering directory '/home/marcos/repos/isel_reto1'
-make: Leaving directory '/home/marcos/repos/isel_reto1'
- 
-make: *** No targets specified and no makefile found.  Stop.
-
