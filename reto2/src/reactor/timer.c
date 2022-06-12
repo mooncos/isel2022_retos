@@ -9,6 +9,7 @@
 
 /*
  * Utility functions
+ */
 /* res = a - b */
 void timeval_sub(struct timeval *res, struct timeval *a, struct timeval *b)
 {

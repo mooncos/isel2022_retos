@@ -4,6 +4,6 @@
 #include "fsm.h"
 
 //FSM DEFINITION
-fsm_t* fsm_new_light (void);
+fsm_t* fsm_new_light (volatile int* button, int* light);
 
 #endif
