@@ -87,7 +87,7 @@ accept_code(fsm_t *fsm)
 }
 
 fsm_t *
-fsm_new_code(int *validp, volatile int *bt)
+fsm_new_code(int *valid_codep, volatile int *bt)
 {
     static fsm_trans_t code_tt[] = {
         {0, code_ok, 0, accept_code},
@@ -96,7 +96,7 @@ fsm_new_code(int *validp, volatile int *bt)
         {0, button_pressed, 0, increment_current_digit},
         {-1, NULL, -1, NULL},
     };
-    valid_code = validp;
+    valid_code = valid_codep;
     button = bt;
     return fsm_new(code_tt);
 }
