@@ -9,11 +9,11 @@
 #include "fsm.h"
 #include "light.h"
 
-#define TIMER_PERIOD_SEG 30
+#define FIN_PRESENCIA_SEC 30
 
 static struct timespec now;
 static struct timespec end;
-static struct timespec T = {TIMER_PERIOD_SEG, 0};
+static struct timespec T = {FIN_PRESENCIA_SEC, 0};
 
 int luz;
 int presencia;
