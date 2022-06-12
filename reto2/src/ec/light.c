@@ -10,15 +10,9 @@
 
 #define FIN_PRESENCIA_SEC 30
 
-<<<<<<< Updated upstream
-static struct timespec now;
-static struct timespec end;
-static struct timespec T = {FIN_PRESENCIA_SEC, 0};
-=======
 static struct timeval now;
 static struct timeval end;
-static struct timeval T = {TIMER_PERIOD_SEG, 0};
->>>>>>> Stashed changes
+static struct timeval T = {FIN_PRESENCIA_SEC, 0};
 
 int *luz;
 volatile int *presencia;
