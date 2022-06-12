@@ -184,7 +184,7 @@ static void from0to0(fsm_t *this)
 	fsm_cross_t *z = (fsm_cross_t *)this;
 	*z->sp = VERDE;
 	*z->ss = ROJO;
-	printf(">> From 0 to 1:\n > sP: %d\n > sS: %d\n < e: %d\n < bP: %d\n < bS: %d\n   next: %ld.%06ld\n", (int)*z->sp, (int)*z->ss, *z->e, *z->bp, *z->bs, z->next.tv_sec, z->next.tv_usec);
+    printf(">> From 0 to 0:\n > sP: %d\n > sS: %d\n < e: %d\n < bP: %d\n < bS: %d\n   next: %ld.%06ld\n", (int)*z->sp, (int)*z->ss, *z->e, *z->bp, *z->bs, z->next.tv_sec, z->next.tv_usec);
 }
 
 static void from1to1(fsm_t *this)
@@ -192,7 +192,7 @@ static void from1to1(fsm_t *this)
 	fsm_cross_t *z = (fsm_cross_t *)this;
 	*z->sp = AMBAR;
 	*z->ss = ROJO;
-	printf(">> From 1 to 1:\n  sP: %d\n  sS: %d\n  next: %ld.%06ld\n", (int)*z->sp, (int)*z->ss, z->next.tv_sec, z->next.tv_usec);
+	printf(">> From 1 to 1:\n > sP: %d\n > sS: %d\n < e: %d\n < bP: %d\n < bS: %d\n   next: %ld.%06ld\n", (int)*z->sp, (int)*z->ss, *z->e, *z->bp, *z->bs, z->next.tv_sec, z->next.tv_usec);
 }
 static void from1to2(fsm_t *this)
 {
@@ -202,7 +202,7 @@ static void from1to2(fsm_t *this)
 	struct timeval now;
 	gettimeofday(&now, NULL);
 	timeval_add(&z->next, &now, &esperaCambio);
-	printf(">> From 1 to 2:\n  sP: %d\n  sS: %d\n  next: %ld.%06ld\n", (int)*z->sp, (int)*z->ss, z->next.tv_sec, z->next.tv_usec);
+	printf(">> From 1 to 2:\n > sP: %d\n > sS: %d\n < e: %d\n < bP: %d\n < bS: %d\n   next: %ld.%06ld\n", (int)*z->sp, (int)*z->ss, *z->e, *z->bp, *z->bs, z->next.tv_sec, z->next.tv_usec);
 }
 
 static void from2to2(fsm_t *this)
@@ -210,7 +210,7 @@ static void from2to2(fsm_t *this)
 	fsm_cross_t *z = (fsm_cross_t *)this;
 	*z->sp = ROJO;
 	*z->ss = ROJO;
-	printf(">> From 2 to 2:\n  sP: %d\n  sS: %d\n  next: %ld.%06ld\n", (int)*z->sp, (int)*z->ss, z->next.tv_sec, z->next.tv_usec);
+	printf(">> From 2 to 2:\n > sP: %d\n > sS: %d\n < e: %d\n < bP: %d\n < bS: %d\n   next: %ld.%06ld\n", (int)*z->sp, (int)*z->ss, *z->e, *z->bp, *z->bs, z->next.tv_sec, z->next.tv_usec);
 }
 static void from2to3(fsm_t *this)
 {
@@ -220,7 +220,7 @@ static void from2to3(fsm_t *this)
 	struct timeval now;
 	gettimeofday(&now, NULL);
 	timeval_add(&z->next, &now, &esperaLarga);
-	printf(">> From 2 to 3:\n  sP: %d\n  sS: %d\n  next: %ld.%06ld\n", (int)*z->sp, (int)*z->ss, z->next.tv_sec, z->next.tv_usec);
+	printf(">> From 2 to 3:\n > sP: %d\n > sS: %d\n < e: %d\n < bP: %d\n < bS: %d\n   next: %ld.%06ld\n", (int)*z->sp, (int)*z->ss, *z->e, *z->bp, *z->bs, z->next.tv_sec, z->next.tv_usec);
 }
 
 static void from3to4(fsm_t *this)
@@ -231,7 +231,7 @@ static void from3to4(fsm_t *this)
 	struct timeval now;
 	gettimeofday(&now, NULL);
 	timeval_add(&z->next, &now, &esperaAmbar);
-	printf(">> From 3 to 4:\n  sP: %d\n  sS: %d\n  next: %ld.%06ld\n", (int)*z->sp, (int)*z->ss, z->next.tv_sec, z->next.tv_usec);
+	printf(">> From 3 to 4:\n > sP: %d\n > sS: %d\n < e: %d\n < bP: %d\n < bS: %d\n   next: %ld.%06ld\n", (int)*z->sp, (int)*z->ss, *z->e, *z->bp, *z->bs, z->next.tv_sec, z->next.tv_usec);
 }
 static void from3to3(fsm_t *this)
 {
@@ -240,7 +240,7 @@ static void from3to3(fsm_t *this)
 	*z->bs = 0;
 	*z->sp = ROJO;
 	*z->ss = VERDE;
-	printf(">> From 3 to 3:\n  sP: %d\n  sS: %d\n  next: %ld.%06ld\n", (int)*z->sp, (int)*z->ss, z->next.tv_sec, z->next.tv_usec);
+	printf(">> From 3 to 3:\n > sP: %d\n > sS: %d\n < e: %d\n < bP: %d\n < bS: %d\n   next: %ld.%06ld\n", (int)*z->sp, (int)*z->ss, *z->e, *z->bp, *z->bs, z->next.tv_sec, z->next.tv_usec);
 }
 
 static void from4to4(fsm_t *this)
@@ -248,7 +248,7 @@ static void from4to4(fsm_t *this)
 	fsm_cross_t *z = (fsm_cross_t *)this;
 	*z->sp = ROJO;
 	*z->ss = AMBAR;
-	printf(">> From 4 to 4:\n  sP: %d\n  sS: %d\n  next: %ld.%06ld\n", (int)*z->sp, (int)*z->ss, z->next.tv_sec, z->next.tv_usec);
+	printf(">> From 4 to 4:\n > sP: %d\n > sS: %d\n < e: %d\n < bP: %d\n < bS: %d\n   next: %ld.%06ld\n", (int)*z->sp, (int)*z->ss, *z->e, *z->bp, *z->bs, z->next.tv_sec, z->next.tv_usec);
 }
 static void from4to5(fsm_t *this)
 {
@@ -258,7 +258,7 @@ static void from4to5(fsm_t *this)
 	struct timeval now;
 	gettimeofday(&now, NULL);
 	timeval_add(&z->next, &now, &esperaCambio);
-	printf(">> From 4 to 5:\n  sP: %d\n  sS: %d\n  next: %ld.%06ld\n", (int)*z->sp, (int)*z->ss, z->next.tv_sec, z->next.tv_usec);
+	printf(">> From 4 to 5:\n > sP: %d\n > sS: %d\n < e: %d\n < bP: %d\n < bS: %d\n   next: %ld.%06ld\n", (int)*z->sp, (int)*z->ss, *z->e, *z->bp, *z->bs, z->next.tv_sec, z->next.tv_usec);
 }
 
 static void from5to5(fsm_t *this)
@@ -266,7 +266,7 @@ static void from5to5(fsm_t *this)
 	fsm_cross_t *z = (fsm_cross_t *)this;
 	*z->sp = ROJO;
 	*z->ss = ROJO;
-	printf(">> From 5 to 5:\n  sP: %d\n  sS: %d\n  next: %ld.%06ld\n", (int)*z->sp, (int)*z->ss, z->next.tv_sec, z->next.tv_usec);
+	printf(">> From 5 to 5:\n > sP: %d\n > sS: %d\n < e: %d\n < bP: %d\n < bS: %d\n   next: %ld.%06ld\n", (int)*z->sp, (int)*z->ss, *z->e, *z->bp, *z->bs, z->next.tv_sec, z->next.tv_usec);
 }
 static void from5to0(fsm_t *this)
 {
@@ -276,7 +276,7 @@ static void from5to0(fsm_t *this)
 	struct timeval now;
 	gettimeofday(&now, NULL);
 	timeval_add(&z->next, &now, &esperaLarga);
-	printf(">> From 5 to 0:\n  sP: %d\n  sS: %d\n  next: %ld.%06ld\n", (int)*z->sp, (int)*z->ss, z->next.tv_sec, z->next.tv_usec);
+	printf(">> From 5 to 0:\n > sP: %d\n > sS: %d\n < e: %d\n < bP: %d\n < bS: %d\n   next: %ld.%06ld\n", (int)*z->sp, (int)*z->ss, *z->e, *z->bp, *z->bs, z->next.tv_sec, z->next.tv_usec);
 }
 
 /*

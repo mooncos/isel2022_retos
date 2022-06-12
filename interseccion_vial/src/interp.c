@@ -83,6 +83,6 @@ fsm_new_interp(int *boton1, int *boton2, int *espira)
     fsm_init((fsm_t *)this, tt);
     this->boton[0] = boton1;
     this->boton[1] = boton2;
-    this->boton[3] = espira;
+    this->boton[2] = espira;
     return (fsm_t *)this;
 }
