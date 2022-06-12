@@ -15,15 +15,9 @@ int *isr_led;
 int *isr_buzzer;
 
 static int
-armed(fsm_t *fsm)
+button_pressed(fsm_t *fsm)
 {
 	return *isr_button;
-}
-
-static int
-disarmed(fsm_t *fsm)
-{
-	return !*isr_button;
 }
 
 static int
@@ -57,8 +51,8 @@ fsm_t *
 fsm_new_alarm(int *button, int *presence_sensor, int *led, int *buzzer)
 {
 	static fsm_trans_t alarm_tt[] = {
-		{0, armed, 1, turn_on},
-		{1, disarmed, 0, turn_off},
+		{0, button_pressed, 1, turn_on},
+		{1, button_pressed, 0, turn_off},
 		{1, presence, 1, alarm_on},
 		{-1, NULL, -1, NULL},
 	};
