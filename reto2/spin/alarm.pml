@@ -18,12 +18,12 @@ ltl alarmNoActiveNoSounds {
      [] ([](state == 0) -> <> [](ledAndBuzzer == 0))
 }
 
-// Si la alarma no está activa y se presiona el pulsador, la alarma se activa.
+// Si la alarma está activa y se presiona el pulsador, la alarma se desactiva.
 ltl alarmNoActiveAndButtonActive {
     [] (((state == 1) && button) -> <> [](state == 0)) 
 }
 
-// Si la alarma está activa y se presiona el pulsador, la alarma se desactiva.
+// Si la alarma no está activa y se presiona el pulsador, la alarma se activa.
 ltl alarmActiveAndButtonNoActive {
     [] (((state == 0) && button) -> <> [](state == 1))
 }
