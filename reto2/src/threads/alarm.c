@@ -21,9 +21,9 @@ button_pressed(fsm_t *fsm)
 }
 
 static int
-presence(fsm_t *fsm)
+presence_and_not_button(fsm_t *fsm)
 {
-	return *isr_presence_sensor;
+	return (*isr_presence_sensor && !*isr_button);
 }
 
 static void
@@ -38,6 +38,7 @@ turn_on(fsm_t *fsm)
 {
 	*isr_led = 0;
 	*isr_buzzer = 0;
+	*isr_button = 0;
 }
 
 static void
@@ -45,6 +46,7 @@ turn_off(fsm_t *fsm)
 {
 	*isr_led = 0;
 	*isr_buzzer = 0;
+	*isr_button = 0;
 }
 
 fsm_t *
@@ -53,7 +55,7 @@ fsm_new_alarm(int *button, int *presence_sensor, int *led, int *buzzer)
 	static fsm_trans_t alarm_tt[] = {
 		{0, button_pressed, 1, turn_on},
 		{1, button_pressed, 0, turn_off},
-		{1, presence, 1, alarm_on},
+		{1, presence_and_not_button, 1, alarm_on},
 		{-1, NULL, -1, NULL},
 	};
 	isr_button = button;
