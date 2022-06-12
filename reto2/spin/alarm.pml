@@ -20,12 +20,12 @@ ltl alarmNoActiveNoSounds {
 
 // Si la alarma no está activa y se presiona el pulsador, la alarma se activa.
 ltl alarmNoActiveAndButtonActive {
-    [] (((state == 1) && [](!button)) -> <> [](state == 0)) 
+    [] (((state == 1) && button) -> <> [](state == 0)) 
 }
 
 // Si la alarma está activa y se presiona el pulsador, la alarma se desactiva.
 ltl alarmActiveAndButtonNoActive {
-    [] (((state == 0) && [](button)) -> <> [](state == 1))
+    [] (((state == 0) && button) -> <> [](state == 1))
 }
 
 
@@ -53,13 +53,13 @@ active proctype alarm_fsm () {
     do
     :: (state == 0) -> atomic {
         if
-        :: button -> state = 1; ledAndBuzzer = presence
+        :: button -> state = 1; button = 0; ledAndBuzzer = 0;
         fi
     }
     :: (state == 1)  -> atomic {
         if
-        :: !button -> state = 0; ledAndBuzzer = 0
-        :: (button && presence) -> ledAndBuzzer = 1
+        :: button -> state = 0; button = 0; ledAndBuzzer = 0
+        :: (!button && presence) -> ledAndBuzzer = 1; presence = 0;
         fi
     }
     od
@@ -68,10 +68,9 @@ active proctype alarm_fsm () {
 proctype entorno () {
     do
     :: if
-       :: button = 0
        :: button = 1
        :: presence = 1
-       :: (!button) -> skip
+       :: skip
        fi;
        printf ("State = %d, Presence = %d, State = %d, Led and buzzer = %d\n",
                state, presence, button, ledAndBuzzer)
