@@ -7,7 +7,7 @@
 #include "timer.h"
 
 
-static int secret[] = {1, 1, 1};
+static int secret[] = {1, 2, 3};
 static int input[10];
 static int step = 0;
 static struct timeval button_next;
