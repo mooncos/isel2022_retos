@@ -7,7 +7,7 @@
 #include "timer.h"
 
 
-static int secret[] = {1, 2, 3};
+static int code_word[] = {1, 2, 3};
 static int input[10];
 static int step = 0;
 static struct timeval button_next;
@@ -16,12 +16,12 @@ static struct timeval button_period = {1, 0};
 static int *valid_code = NULL;
 
 static volatile int *button = NULL;
-static int started = 0;
+static int ongoing = 0;
 
 static int
 code_ok(fsm_t *fsm)
 {
-    return step >= (sizeof(secret) / sizeof(secret[0]));
+    return step >= (sizeof(code_word) / sizeof(code_word[0]));
 }
 
 static int
@@ -29,19 +29,19 @@ timeout(fsm_t *fsm)
 {
     struct timeval now;
     gettimeofday(&now, NULL);
-    return !code_ok(fsm) && started && (timeval_less(&button_next, &now));
+    return !code_ok(fsm) && ongoing && (timeval_less(&button_next, &now));
 }
 
 static int
 timeout_and_digit_ok(fsm_t *fsm)
 {
-    return timeout(fsm) && !code_ok(fsm) && (input[step] == secret[step]);
+    return timeout(fsm) && !code_ok(fsm) && (input[step] == code_word[step]);
 }
 
 static int
 timeout_and_digit_not_ok(fsm_t *fsm)
 {
-    return timeout(fsm) && !code_ok(fsm) && (input[step] != secret[step]);
+    return timeout(fsm) && !code_ok(fsm) && (input[step] != code_word[step]);
 }
 
 static int
@@ -57,7 +57,7 @@ increment_current_digit(fsm_t *fsm)
     struct timeval now;
     gettimeofday(&now, NULL);
     timeval_add(&button_next, &now, &button_period);
-    started = 1;
+    ongoing = 1;
     button = 0;
 }
 
@@ -65,17 +65,17 @@ static void
 next_digit(fsm_t *fsm)
 {
     input[++step] = 0;
-    started = 0;
+    ongoing = 0;
 }
 
 static void
 reset(fsm_t *fsm)
 {
     printf("CODE: RESET %d (%d/%d, %d/%d, %d/%d)\n", step,
-           input[0], secret[0], input[1], secret[1], input[2], secret[2]);
+           input[0], code_word[0], input[1], code_word[1], input[2], code_word[2]);
     step = 0;
     input[step] = 0;
-    started = 0;
+    ongoing = 0;
 }
 
 static void
